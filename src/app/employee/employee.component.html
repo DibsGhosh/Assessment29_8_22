@@ -1,0 +1,94 @@
+<div class="container">
+    <h1 class="text-center">
+        Employee Details
+    </h1>
+    <form  [formGroup]="employeeForm" (ngSubmit)="submit()" class="row">
+        <mat-form-field appearance="fill" class="col-md-4">
+            <mat-label>First Name</mat-label>
+            <input matInput type="text" formControlName="firstName">
+            <mat-error *ngIf="employeeForm.get('firstName')!.errors!==null && employeeForm.get('firstName')!.errors!['required']">
+                First Name is required.
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="fill" class="col-md-4">
+            <mat-label>Middle Name</mat-label>
+            <input matInput type="text" formControlName="middleName">
+          </mat-form-field>
+
+          <mat-form-field appearance="fill" class="col-md-4">
+            <mat-label>Last Name</mat-label>
+            <input matInput type="text" formControlName="lastName">
+            <mat-error *ngIf="employeeForm.get('lastName')!.errors!==null && employeeForm.get('lastName')!.errors!['required']">
+                Last Name is required.
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="fill" class="col-md-4">
+            <mat-label>Email ID</mat-label>
+            <input matInput type="email" formControlName="emailId">
+            <mat-error *ngIf="employeeForm.get('emailId')!.errors!==null && employeeForm.get('emailId')!.errors!['required']">
+                Email ID is required.
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="fill" class="col-md-4">
+            <mat-label>Contact Number</mat-label>
+            <input matInput type="text" formControlName="contact" maxlength="10">
+            <mat-error *ngIf="employeeForm.get('contact')!.errors!==null && employeeForm.get('contact')!.errors!['required']">
+                Contact Number is required.
+            </mat-error>
+            <mat-error *ngIf="employeeForm.get('contact')!.errors!==null && employeeForm.get('contact')!.errors!['minlength']">
+                Should be of 10 digit only.
+            </mat-error>
+          </mat-form-field>
+
+            <mat-form-field appearance="fill" class="col-md-4">
+                <mat-label>Date of Birth</mat-label>
+                <input matInput type="date" formControlName="Dob">
+                <mat-error *ngIf="employeeForm.get('Dob')!.errors!==null && employeeForm.get('Dob')!.errors!['required']">
+                    Date of Birth is required.
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill" class="col-md-4">
+                <mat-label>Employee Type</mat-label>
+                <mat-select matNativeControl formControlName="employeeType">
+                    <mat-option value="Contract">Contract</mat-option>
+                    <mat-option value="Permanent">Permanent</mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill" class="col-md-4">
+                <mat-label>Address</mat-label>
+                <input matInput type="text" formControlName="address">
+                <mat-error *ngIf="employeeForm.get('address')!.errors!==null && employeeForm.get('address')!.errors!['required']">
+                    Address is required.
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill" class="col-md-4">
+                <mat-label>Pincode</mat-label>
+                <input matInput type="text" formControlName="pincode" maxlength="6">
+                <mat-error *ngIf="employeeForm.get('pincode')!.errors!==null && employeeForm.get('pincode')!.errors!['required']">
+                    Pincode is required.
+                </mat-error>
+                <mat-error *ngIf="employeeForm.get('pincode')!.errors!==null && employeeForm.get('pincode')!.errors!['minlength']">
+                    Should be of 6 digit only.
+                </mat-error>
+              </mat-form-field>
+
+              <div id="gender" class="col-md-4">
+                <mat-label>Gender: &nbsp;</mat-label>
+                <mat-radio-group formControlName="gender">
+                    <mat-radio-button value="Male">Male</mat-radio-button>
+                    <mat-radio-button value="Female" class="mx-4">Female</mat-radio-button>
+                </mat-radio-group>
+            </div>
+            
+              <section class="col-md-12">
+                <button mat-raised-button color="primary" (click)="submit()" class="col-md-auto">Create</button>
+                <button mat-raised-button color="accent" (click)="routeBack()" class="col-md-auto mx-4">Go to Employee</button>
+              </section>
+    </form>
+</div>
